@@ -1,0 +1,23 @@
+n, k = map(int, input().split())
+value = []
+for i in range(n):
+    value.append(int(input()))
+
+count = 0
+for i in range(n):
+    b = value[(n-1)-i]
+    sur = k%b
+    if sur != k:
+        m = k//b
+        count += m
+        k = sur
+    else:
+        continue
+
+print(count)
+
+n = int(input())
+for i in range(n):
+    start, end = map(int, input().split())
+
+
