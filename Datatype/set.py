@@ -39,5 +39,14 @@ print(s1.union(s2))
 # {1, 2, 3, 4, 5, 6, 4, 5, 6, 7, 8, 9}
 
 # 3) 차집합 구하기
+print(s1-s2)
+# {1, 2, 3}
+print(s2-s1)
+# {8, 9, 7}
+print(s1.difference(s2))
+# {1, 2, 3}
+print(s2.difference(s1))
+# {8, 9, 7}
 
+# 4. 집합 관련 함수들
 
