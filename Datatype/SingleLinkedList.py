@@ -5,47 +5,39 @@ class Node(object):
         self.next = None
 
 
-# Singly Linked List 클래스 선언
-class SinglyLinkedList(object):
+# Single Linked List 선언
+class SingleLinkedList(object):
     def __init__(self):
         self.head = None
         self.count = 0
 
-    # Add new node at the end of the Linked List
+    # Add a new node at the end of the linked list
     def append(self, node):
-        if(self.head == None):
+        if self.head == None:
             self.head = node
         else:
-            cur  = self.head
+            cur = self.head
             while cur.next != None:
                 cur = cur.next
             cur.next = node
 
-    # return first index of data in the linked list
-    def getdataIndex(self, data):
-        curn = self.head
+
+    def getDataIndex(self, data):
+        cur = self.head
         idx = 0
-        while curn:
-            if curn.data == data:
+
+        while cur:
+            if cur.data == data:
                 return idx
-            curn = curn.next
+            cur = cur.next
             idx += 1
         return -1
 
-    # Add node at the given index
     def insertNodeAtIndex(self, idx, node):
-        """
-        A node can be added in three ways:
-        1) At the front of the linked list
-        2) At a given index
-        3) At the end of the linked list
-        """
-
-        curn = self.head
+        cur = self.head
         prevn = None
         cur_i = 0
 
-        # (1)
         if idx == 0:
             if self.head:
                 nextn = self.head
@@ -54,84 +46,83 @@ class SinglyLinkedList(object):
             else:
                 self.head = node
         else:
-            # (2) at a given index
-            # (3) end
             while cur_i < idx:
-                if curn:
-                    prevn = curn
-                    curn = curn.next
+                if cur:
+                    prevn = cur
+                    cur = cur.next
+                    cur_i += 1
                 else:
                     break
-                cur_i += 1
 
             if cur_i == idx:
-                node.next = curn
+                node.next = cur
                 prevn.next = node
             else:
                 return -1
 
-
-    # Add new node before the given data
     def insertNodeAtData(self, data, node):
-        index = self.getdataIndex(data)
-        if 0 <= index:
+        index = self.getDataIndex(data)
+        if index != -1:
             self.insertNodeAtIndex(index, node)
         else:
             return -1
 
-    # delete data at given index
-    def deleteAtIndex(self, idx):
-        curn_i = 0
-        curn = self.head
+    def deleteAtIndex(self, index):
         prevn = None
-        nextn = self.head.next
-        if idx == 0:
-            self.head = nextn
+        curn = self.head
+        curi = 0
+
+        if index == 0:
+            self.head = curn.next
         else:
-            while curn_i < idx:
+            while curi < index:
                 if curn.next:
-                    rpevn = curn
-                    curn = nextn
-                    nextn = nextn.next
+                    prevn = curn
+                    curn = curn.next
+                    curi += 1
                 else:
                     break
-                curn_i += 1
-
-            if curn_i == idx:
-                prevn.next= nextn
+            if curi == index:
+                prevn.next = curn.next
             else:
                 return -1
 
-    # Empty linked list
+
     def clear(self):
         self.head = None
 
-    # 출력
     def print(self):
-        curn = self.head
+        cur = self.head
         string = ""
-        while curn:
-            string += str(curn.data)
-            if curn.next:
+        while cur:
+            string += str(cur.data)
+            if cur.next:
                 string += "->"
-            curn = curn.next
+            cur = cur.next
+
+
         print(string)
 
 
 if __name__ == "__main__":
-    sl = SinglyLinkedList()
+    sl = SingleLinkedList()
     sl.append(Node(1))
     sl.append(Node(2))
     sl.append(Node(3))
-
     sl.append(Node(5))
     sl.insertNodeAtIndex(3, Node(4))
     sl.print()
 
-    print(sl.getdataIndex(1))
-    print(sl.getdataIndex(2))
-    print(sl.getdataIndex(3))
-    print(sl.getdataIndex(4))
-    print(sl.getdataIndex(5))
-    sl.insertNodeAtData(1, Node(0))
-    print(sl)
+    print(sl.getDataIndex(1))
+    print(sl.getDataIndex(2))
+    print(sl.getDataIndex(3))
+    print(sl.getDataIndex(4))
+    print(sl.getDataIndex(5))
+    sl.insertNodeAtIndex(1, Node(0))
+    sl.print()
+
+
+
+
+
+

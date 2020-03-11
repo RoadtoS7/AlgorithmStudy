@@ -1,6 +1,3 @@
-''' BinaryTree.py '''
-# 이진트리
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -8,34 +5,34 @@ class Node:
         self.right = None
 
     def __str__(self):
-        return str(self.data)
+        return self.data
 
 class Tree:
     def __init__(self):
         self.root = None
 
     def preorderTraversal(self, node):
-        print(node, end='')
-        if not node.left == None : self.prorderTraversal(node.left)
+        print(node.data, end='')
+        if not node.left == None: self.preorderTraversal(node.left)
         if not node.right == None: self.preorderTraversal(node.right)
 
     def inorderTraversal(self, node):
         if not node.left == None: self.inorderTraversal(node.left)
-        print(node, end='')
+        print(node.data, end ='')
         if not node.right == None: self.inorderTraversal(node.right)
 
     def postorderTraversal(self, node):
         if not node.left == None: self.postorderTraversal(node.left)
+        print(node.data, end ='')
         if not node.right == None: self.postorderTraversal(node.right)
 
-    def makeRoot(self, node, left_node, right_node):
+    def makeRoot(self, node, leftNode, rightNode):
         if self.root == None:
             self.root = node
-        node.left = left_node
-        node.right = right_node
+        node.left = leftNode
+        node.right = rightNode
 
-
-if __name__ == "__main__":
+if __name__  == "__main__":
     node = []
     node.append(Node('-'))
     node.append(Node('*'))
@@ -45,13 +42,13 @@ if __name__ == "__main__":
     node.append(Node('C'))
     node.append(Node('D'))
 
-    m_tree = Tree()
-    for i in range(int(len(node) / 2)):
-        m_tree.makeRoot(node[i], node[i*2+1], node[i*2+2])
+    tree = Tree()
+    for i in range(int(len(node)/2)):
+        tree.makeRoot(node[i], node[i*2 + 1], node[i*2 + 2 ])
 
-    print('전위 순회 : ', end='')
-    m_tree.preorderTraversal(m_tree.root)
-    print('\n중위순회 : ', end='')
-    m_tree.inorderTraversal(m_tree.root)
-    print('\n후위순회 : ', end='')
-    m_tree.postorderTraversal(m_tree.root)
+    print('전위 순회:', end = '')
+    tree.preorderTraversal(tree.root)
+    print('\n중위 순회:', end='')
+    tree.inorderTraversal(tree.root)
+    print('\n후위 순회:', end='')
+    tree.postorderTraversal(tree.root)
