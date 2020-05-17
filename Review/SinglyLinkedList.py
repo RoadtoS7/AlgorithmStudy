@@ -119,5 +119,6 @@ if __name__ == "__main__":
     sl.append(Node(3))
     sl.append(Node(5))
     sl.insertNodeAtIndex(3, Node(4))
+    sl.insertNodeAtIndex(5, Node(6))
     sl.print()
 

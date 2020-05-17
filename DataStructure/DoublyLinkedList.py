@@ -27,7 +27,7 @@ class DoublyLinkedList(object):
             nextn = cur
             self.head = node
             node.right = nextn
-            node.left = self.head
+            nextn.left = self.head
         else:
             while curIdx < idx:
                 if cur:
