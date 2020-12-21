@@ -45,7 +45,7 @@ in_order(tree[root], 1)
 
 result_level = 1
 result_width = level_max[1] - level_min[1] + 1
-for i in range(2, level_depth):
+for i in range(2, level_depth + 1):
     width = level_max[i] - level_min[i] + 1
     if result_width < width:
         result_level = i
