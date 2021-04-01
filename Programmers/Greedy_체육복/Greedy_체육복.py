@@ -19,6 +19,5 @@ def solution(n, lost, reserve):
                 isHave[after] = 1
                 continue
 
-
     answer = sum(isHave) -1
     return answer
