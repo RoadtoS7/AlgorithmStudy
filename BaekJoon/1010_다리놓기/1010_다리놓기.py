@@ -12,4 +12,3 @@ for _ in range(T):
         multi_N *= j
 
     print(multi_M // multi_N)
-
