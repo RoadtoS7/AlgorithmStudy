@@ -1,7 +1,7 @@
 def solution(enter, leave):
     N = len(enter)
     leave_idx, enter_idx = 0, 0
-    answer = [0] *  N
+    answer = [0] * N
     room = set()
 
     for leave_one in leave:
