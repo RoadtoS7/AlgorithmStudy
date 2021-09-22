@@ -1,24 +1,25 @@
+from sys import stdin
+input = stdin.readline
+
 N, M, K = map(int, input().split())
 numbers = [int(input()) for _ in range(N)]
-
-commands = []
-for _ in range(M + K):
-    a, b, c = map(int, input().split())
-    commands.append((a, b, c))
-
-sum_list = [0] * (N)
-sum_list[0] = numbers[0]
-
-for i in range(1, N):
-    sum_list[i] = sum_list[i - 1] + numbers[i]
-
+commands = [tuple(map(int, input().split())) for _ in range(M + K)]
+S = [0] * (N + 1)
+is_exist_S = False
 for a, b, c in commands:
     if a == 1:
         numbers[b - 1] = c
-        for i in range(b - 1, N):
-            sum_list[i] = sum_list[i - 1] + numbers[i]
+        if is_exist_S:
+            for i in range(b, N + 1):
+                S[i] = S[i - 1] + numbers[i - 1]
     else:
-        print(sum_list[c - 1] - sum_list[b - 2])
+        if not is_exist_S:
+            for i in range(c + 1):
+                S[i] = S[i - 1] + numbers[i - 1]
+            is_exist_S = True
+        print(S[c] - S[b - 1])
+
+
 
 
 
